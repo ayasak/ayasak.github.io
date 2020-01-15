@@ -1,0 +1,40 @@
+<html>
+  <head>
+<script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+</style>
+</head>
+  <body>
+    <script>
+    var bImage;
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    
+    
+  function preload() {
+   bImage = loadImage('bimage.jpg')
+
+}
+ function setup() {
+  createCanvas(w,h, WEBGL);
+
+}
+
+function draw() {
+  clear();
+  background(bImage);
+  rotateY(mouseX/100);
+  rotateX(mouseY/100);
+  rect(100, 100, 100, 100)
+  fill('red');
+  noStroke();
+}
+
+
+    </script>
+  </body>
+</html>
