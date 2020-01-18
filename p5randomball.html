@@ -1,0 +1,41 @@
+
+<html>
+  <head>
+<script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
+
+  </head>
+  <body>
+    <script>
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    var x;
+    var y;
+    var speed = 5;
+    
+      function setup() {
+        createCanvas(w,h);
+        x = w/2;
+        y = h/2;
+
+      }
+      
+      function draw(){
+        /*noStroke();
+        var r = random(0,256);
+        var g = random(0,256);
+        var b = random(0,256);
+        var x = random(0,w);
+        var y = random(0,h);
+        fill(r,g,b);
+
+        */
+        x += random(-speed,speed);
+        y += random(-speed,speed);
+        ellipse(x,y,50,50);
+
+
+
+      }
+    </script>
+  </body>
+</html>
