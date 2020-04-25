@@ -1,0 +1,20 @@
+#playbutt {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 100px;
+  top: 40%;
+  position: absolute;
+  letter-spacing: 0.5;
+  left: 41%;
+  background-color: white;
+}
+#agariotitle {
+font-family: 'Aldrich', sans-serif;
+  font-size: 150px;
+  position: absolute;
+  letter-spacing: 0.5;
+  width: 100%;
+  text-align: center;
+  background-color:white;
+  overflow: hidden;
+
+}
