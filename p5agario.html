@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script src = "p5.min.js"></script>
+    <script src = "p5.dom.js"></script>
+    <script src = "p5.play.js"></script>
+
+    <script src = "p5agario.js"></script>
+    <link rel = "stylesheet" href = "p5agario.css">
+
+
+  </head>
+  <body>
+    <div id = "agariotitle">PIXEL HUNT</div>
+
+      <button id = "playbutt" onclick = "window.location.href = 'p5agarioplay.html'">PLAY</button>
+
+            
+  <script>
+  
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    var circles;
+
+    
+    function setup(){
+        createCanvas(w,h);
+  circles = new Group();
+
+
+  for(var i = 0; i<282; i++) {
+    var newCircle = createSprite(random(0, width), random(0, height), 20, 20);
+    circles.add(newCircle);
+  }
+
+}
+function draw(){
+  drawSprites();
+}
+      
+  
+            
+  </script>
+
+  </body>
+</html>
