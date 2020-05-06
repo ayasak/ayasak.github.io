@@ -18,3 +18,66 @@ font-family: 'Aldrich', sans-serif;
   overflow: hidden;
 
 }
+#howtoplaytitle {
+ font-family: 'Aldrich', sans-serif;
+  font-size: 80px;
+  position: absolute;
+  left: 33%;
+  top: 4%;
+ 
+}
+#actualrules{
+ font-family: 'Aldrich', sans-serif;
+  font-size: 30px;
+  position: absolute;
+  left: 14%;
+  top: 25%;
+  text-align: center;
+}
+#realplaybutt {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 89px;
+  top: 70%;
+  position: absolute;
+  letter-spacing: 0.5;
+  left: 41%;
+  background-color: white;
+}
+@keyframes levelnameDisappear {
+  100% {
+  opacity:0;
+  visibility:hidden;
+  }
+}
+#level1title {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 60px;
+  top: 30%;
+  left: 44%;
+  text-align: center;
+  position: absolute;
+  opacity: 1;
+  animation-name: levelnameDisappear;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+#level2title {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 60px;
+  top: 30%;
+  left: 20%;
+  text-align: center;
+  position: absolute;
+  opacity: 1;
+  animation-name: levelnameDisappear;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+#nextlevel2butt {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 60px;
+ text-align: center;
+  position: absolute;
+  background-color: white;
+  left: 20%
+}
