@@ -1,6 +1,5 @@
 <html>
   <head>
-
     <script src = "p5.min.js"></script>
     <script src = "p5.dom.js"></script>
     <script src = "p5.play.js"></script>
@@ -11,6 +10,57 @@
   <body>
     <div id = "level2title"><b>WOW! YOU MADE IT TO LEVEL 2</b></div>
 
-    
+<script>
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    var pixels;
+    var hunter;
+    var obstacles;
+    var score = 0;
+    let nextlevel3;
+    let obstacles;
+function preload(){
+   obstacles = loadAnimation('invader.png');
+  
+}
+
+function setup() {
+  createCanvas(w, h);
+  pixels = new Group();
+  obstacles = new Group();
+      image(invaderimg, 0,0);
+
+
+
+  hunter = createSprite(random(0, width), random(0, height));
+  for(var i = 0; i<200; i++) {
+    var newPixels = createSprite(random(0, width), random(0, height), 20, 20);
+    pixels.add(newPixels);
+  }
+  
+  for(var x = 0; x<30; x++){
+    var newObstacles = createSprite(random(0, width), random(0, height), 20, 20);
+    newObstacles.addAnimation('normal', 'invader.png');
+    obstacles.add(newObstacles);
+  }
+
+}
+function draw() {
+  background(255);
+
+  hunter.position.x = mouseX;
+  hunter.position.y = mouseY;
+
+  hunter.overlap(pixels, getPixels);
+  drawSprites();
+  textSize(50);
+}
+
+function getPixels(hunter, pixels){
+  pixels.remove();
+  score += 1;
+}
+
+</script>
   </body>
 </html>
