@@ -60,6 +60,7 @@ font-family: 'Aldrich', sans-serif;
   animation-name: levelnameDisappear;
   animation-duration: 3s;
   animation-fill-mode: forwards;
+  background-color: white;
 }
 #level2title {
   font-family: 'Aldrich', sans-serif;
@@ -72,6 +73,8 @@ font-family: 'Aldrich', sans-serif;
   animation-name: levelnameDisappear;
   animation-duration: 3s;
   animation-fill-mode: forwards;
+  background-color: white;
+
 }
 #nextlevel2butt {
   font-family: 'Aldrich', sans-serif;
@@ -80,4 +83,85 @@ font-family: 'Aldrich', sans-serif;
   position: absolute;
   background-color: white;
   left: 20%
+}
+#nextlevel3butt {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 60px;
+ text-align: center;
+  position: absolute;
+  background-color: white;
+  left: 20%
+}
+#scoreboardtit {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 40px;
+  position: absolute;
+  background-color: white;
+  border-color: black;
+  border-style: solid;
+  font-weight: bold;
+  top: 4%;
+  width: 17%;
+  left: 80%;
+  text-align: center;
+ 
+}
+@keyframes appearAlert {
+  0%{
+    opacity: 0;
+  }
+  100% {
+   opacity: 1;
+  }
+}
+
+#alertinvader {
+  background-color: white;
+  width: 30%;
+  height: 18%;
+  top: 30%;
+  left: 35%; 
+  position: absolute;
+  font-family: 'Aldrich', sans-serif;
+  border-style: solid;
+  border-color: black;
+  text-align: center;
+  animation-name: appearAlert;
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  cursor: pointer;
+}
+#closebutton {
+  left: 75%;
+  color: black;
+  font-size: 20px;
+  line-height: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#closebutton:hover {
+  color: black;
+  font-weight: bold;
+}
+#level2againbutt {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 60px;
+ text-align: center;
+  position: absolute;
+  background-color: white;
+  left: 20%
+}
+#timerboardtit {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 40px;
+  position: absolute;
+  background-color: white;
+  border-color: black;
+  border-style: solid;
+  font-weight: bold;
+  top: 10%;
+  width: 17%;
+  left: 80%;
+  text-align: center 
 }
