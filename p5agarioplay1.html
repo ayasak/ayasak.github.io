@@ -4,7 +4,6 @@
     <script src = "p5.min.js"></script>
     <script src = "p5.dom.js"></script>
     <script src = "p5.play.js"></script>
-    <script src = "p5agario.js"></script>
     <link rel = "stylesheet" href = "p5agario.css">
 
 
@@ -19,10 +18,10 @@
     var h = window.innerHeight;
     var pixels;
     var hunter;
-    var score = 0;
+    let score = 0;
     let nextlevel2;
+    var scoreboard;
 
-  
 
 function setup() {
   createCanvas(w, h);
@@ -30,7 +29,7 @@ function setup() {
   hunter = createSprite(random(0, width), random(0, height));
 
 
-  for(var i = 0; i<200; i++) {
+  for(var i = 0; i<201; i++) {
     var newPixels = createSprite(random(0, width), random(0, height), 20, 20);
     pixels.add(newPixels);
   }
@@ -45,9 +44,11 @@ function draw() {
   hunter.overlap(pixels, getPixels);
   drawSprites();
   textSize(50);
+
   
   if(pixels.length>0){
-    text(score, width/2,height/2);
+    let scoreboard = createElement('div',"SCORE:" + " " + score);
+   scoreboard.id("scoreboardtit");
   }
   else{
     text("YOU PASSED LEVEL 1!", width/3, height/3);
