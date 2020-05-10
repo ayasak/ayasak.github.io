@@ -8,6 +8,13 @@
   </head>
   <body>
     <div id = "level2title"><b>WOW! YOU MADE IT TO LEVEL 2</b></div>
+    <span id = "alertinvader" onclick = "style.display = 'none'">
+      <b> ALERT:</b> THERE ARE EVIL INVADERS!   <br>  
+      <img src = "invader.png" width = "10%" height = "30%">
+    <br>SUCCESSFULLY CLEAR ALL PIXELS IN <b>TIME</b>
+     TO MOVE ON. <br>
+      <span id = "closebutton" onclick = "this.parentElement.style.display = 'none';">&times; CLICK TO CLOSE</span>        
+    </span>
 
 <script>
     var w = window.innerWidth;
@@ -15,51 +22,84 @@
     var pixels;
     var hunter;
     var obstacles;
-    var score = 0;
+    let score = 0;
     let nextlevel3;
-    let obstacleimg;
+    var invaderimg;
+   var scoreboard;
+   var timer = 30;
+   var timerboard;
 
 function preload(){
-   obstacleimg = loadImage('invader.png');
-  
+  invaderimg = loadImage("invader.png");
 }
 
 function setup() {
   createCanvas(w, h);
   pixels = new Group();
   obstacles = new Group();
-
-
-
   hunter = createSprite(random(0, width), random(0, height));
-  for(var i = 0; i<200; i++) {
+  
+  for(var i = 0; i<201; i++) {
     var newPixels = createSprite(random(0, width), random(0, height), 20, 20);
     pixels.add(newPixels);
   }
-  
-  for(var x = 0; x<30; x++){
-    newObstacles = createSprite(width/2,height/2, 100, 100);
-   newObstacles = image(obstacleimg, 100, 100);
+  for(var x = 0; x<7; x++){
+    newObstacles = createSprite(random(0, width), random(0, height));
+    newObstacles.addImage(invaderimg);
     obstacles.add(newObstacles);
   }
-
+  setInterval(timeIt, 1000);
 }
 function draw() {
   background(255);
 
   hunter.position.x = mouseX;
   hunter.position.y = mouseY;
-
+  hunter.displace(obstacles);
   hunter.overlap(pixels, getPixels);
   drawSprites();
   textSize(50);
-}
 
+if(pixels.length>0){
+  let scoreboard = createElement('div',"SCORE:" + " " + score);
+   scoreboard.id("scoreboardtit");
+  let timerboard = createElement('div', "TIMER:"+ "" + timer);
+    timerboard.id("timerboardtit");
+   if (timer < 30){
+     text('0:' + timer);
+   }
+  }
+  if (pixels.length > 0 && timer == 0){
+     text("GAME OVER :(", width/2.5, height/2.5);
+     level2again = createButton('TRY AGAIN');
+     level2again.id('level2againbutt');
+    level2again.position(width/2.5, height/2.3);
+    level2again.mousePressed(level2againButt);
+  }
+if  (pixels.length == 0 && timer> 0) {
+    text("YOU PASSED LEVEL 2!", width/3, height/3);
+    nextlevel3 = createButton('LEVEL 3');
+    nextlevel3.id('nextlevel3butt');
+    nextlevel3.position(width/2.3, height/2.3);
+    nextlevel3.mousePressed(nextlevelButt);
+  }
+
+}
+function timeIt(){
+  if(timer > 0){
+    timer--;
+  }
+}
+function nextlevelButt(){
+  window.location.href = "p5agarioplay3.html";
+}
+function level2againButt(){
+  window.location.href = "p5agarioplay2.html";
+}
 function getPixels(hunter, pixels){
   pixels.remove();
   score += 1;
 }
-
 </script>
   </body>
 </html>
