@@ -1,0 +1,134 @@
+<html>
+  <head>
+    <script src = "p5.min.js"></script>
+    <script src = "p5.dom.js"></script>
+    <script src = "p5.play.js"></script>
+   <script src = "p5agarioplaybullets.js"></script>
+   <script src = "p5agarioplaypixels.js"></script>
+   <script src = "p5agarioplayhunter.js"></script>
+    <link rel = "stylesheet" href = "p5agario.css">
+
+  </head>
+  <body>
+    <div id = "level3title"><b>WOAH! YOU MADE IT TO LEVEL 3!!</b></div>
+<script>
+
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    var pixels;
+    var pixelgroup = [];
+    var bullets = [];
+    var hunter;
+    let score = 0;
+    let nextlevel3;
+   var scoreboard;
+   let gameover = false;
+ 
+ function setup() {
+  createCanvas(w, h);
+  hunter = new Hunter();
+  bullet = new Bullets(width/2, height/2);
+
+  for(var i = 0; i<7; i++){
+    for(var k = 0; k <7; k++){
+      pixelgroup.push(new Pixels(i*100, k*60))
+    }
+  }
+}
+function draw() {
+  background(0);
+  hunter.show();
+  hunter.move();
+
+  for(var i = 0; i<pixelgroup.length; i++){
+    pixelgroup[i].show();
+    if(gameover === false){
+      pixelgroup[i].move();
+    }
+  }
+  if(gameover){
+    textSize(70);
+    textAlign(CENTER);
+    text("GAME OVER", width/2, height/2);
+    level3again = createButton('TRY AGAIN');
+    level3again.id('level3againbutt');
+    level3again.position(width/3, height/1.7);
+    level3again.mousePressed(level3againButt);
+  }
+  else if(pixelgroup.length === 0){
+    gameover === true;
+    hunter.move();
+    textSize(50);
+    textAlign(CENTER);
+    text("YOU CONQUERED PIXEL HUNT!", width/2, height/2);
+    backhome = createButton("HOME SCREEN");
+    backhome.id('backhomebutt');
+    backhome.position(width/3, height/1.7);
+    backhome.mousePressed(backhomeButt);
+  }
+function level3againButt(){
+    window.location.href = "p5agarioplay3.html";
+}
+function backhomeButt(){
+  window.location.href = "p5agario.html";
+}
+
+  for(var i = 0; i<pixelgroup.length; i++){
+    pixelgroup[i].show();
+    if(!gameover){
+      pixelgroup[i].move();
+    }
+  }
+  for (var i = 0; i < bullets.length; i++) {
+    bullets[i].show();
+    bullets[i].move();
+    for( var d = 0; d < pixelgroup.length; d++){
+      if(bullets[i].hits(pixelgroup[d])){
+      bullets[i].bye();
+      pixelgroup.splice(d,1);
+      let scoreboard = createElement('div',"SCORE:" + " " + score);
+      scoreboard.id("scoreboardtit2");
+      score++;
+    }
+  }
+  }
+  //for shifting motion
+var screenedge = false;
+for(var i = 0; i < pixelgroup.length; i++){
+  pixelgroup[i].show();
+  pixelgroup[i].move();
+  if(pixelgroup[i].x > width || pixelgroup[i].x < 0){
+    screenedge = true;
+  }
+}
+if(screenedge){
+   for(var i = 0; i< pixelgroup.length; i++){
+     pixelgroup[i].shiftDown();
+   }
+ }
+for( var i = bullets.length-1; i>= 0; i--){
+  if(bullets[i].goaway){
+    bullets.splice(i,1);
+  }
+  }
+}
+function keyReleased() {
+if (keyCode != 32) {
+  hunter.setWay(0);
+}
+}
+function keyPressed() {
+  if (keyCode === 39) {
+    hunter.setWay(1);
+  }
+   if (keyCode === 37) {
+    hunter.setWay(-1);
+  }
+  if (keyCode === 32) {
+    var bullet = new Bullets(hunter.x, height);
+    bullets.push(bullet);
+  }
+}
+</script>
+  </body>
+</html>
